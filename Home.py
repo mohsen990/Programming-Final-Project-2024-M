@@ -16,7 +16,7 @@ st.markdown('''
                📊 Data Visualization: Data stunning visualizations. 
 
                📈 some interesting plots: Analysing dataset with various plots
-            
+             
                🤖 Machine Learning: Predictive Modeling: Create accurate predictive models for tasks like regression, classification, clustering.
             ''')
 
