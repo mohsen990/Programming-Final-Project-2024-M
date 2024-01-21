@@ -53,7 +53,9 @@ st.pyplot(HeatFig)
 CountOfTransmission = Vehicle_Prices_db['Transmission'].value_counts()
 CountOfUse = Vehicle_Prices_db['UsedOrNew'].value_counts()
 CountOfDoors = Vehicle_Prices_db['Doors'].value_counts()
+CountOfFuelType = Vehicle_Prices_db['FuelType'].value_counts()
 CountOfCylinder = Vehicle_Prices_db['CylindersinEngine'].value_counts()
+CountOfBodyType = Vehicle_Prices_db['BodyType'].value_counts()
 
 MainFig = plt.figure(figsize=(8,8) )
 SubFig_1 = MainFig.add_subplot(2,2,1)
@@ -65,12 +67,14 @@ SubFig_2.bar(CountOfUse.index, CountOfUse.values , color = 'lightgreen')
 plt.title("Use Or New Cars")
 
 SubFig_3 = MainFig.add_subplot(2,2,3)
-SubFig_3.bar(CountOfDoors.index , CountOfDoors.values , color = 'cyan')
-plt.title("Distribution of Doors")
+SubFig_3.bar(CountOfFuelType.index , CountOfFuelType.values , color = 'cyan')
+plt.xticks(rotation=90 ,ha='right')
+plt.title("Fuel Type")
 
 SubFig_4 = MainFig.add_subplot(2,2,4)
-SubFig_4.bar(CountOfCylinder.index , CountOfCylinder.values , color = 'magenta')
-plt.title("Cylinder In Engin")
+SubFig_4.bar(CountOfBodyType.index , CountOfBodyType.values , color = 'magenta')
+plt.xticks(rotation=90 , ha='right')
+plt.title("Body Type")
 plt.suptitle('Distribution Of Items', fontsize = 20)
 
 st.pyplot(MainFig)
@@ -85,6 +89,17 @@ plt.xlabel('Brand' ,fontsize = 12)
 plt.ylabel('Count' ,fontsize = 12)
 
 st.pyplot(BrandFigure)
+
+#---
+CountOfLocation = Vehicle_Prices_db['Location'].value_counts()
+LocFigure = plt.figure(figsize=(12,8))
+plt.bar(CountOfLocation.head(50).index , CountOfLocation.head(50).values , color = 'darkgreen')
+plt.xticks(rotation=90 ,ha='right')
+plt.title('Distribution Of Location' ,fontsize = 20)
+plt.xlabel('Location' ,fontsize = 12)
+plt.ylabel('Count' ,fontsize = 12)
+
+st.pyplot(LocFigure)
 
 #-- -----------------------------------------------------
 Top10Brand = Vehicle_Prices_db['Brand'].value_counts(ascending=True).tail(5)
@@ -131,5 +146,26 @@ plt.title("Mean Kilometer By Price" , fontsize = 20)
 plt.xlabel("Year" , fontsize = 14)
 plt.ylabel("Mean Kilometer" , fontsize = 14)
 plt.grid()
-
 st.pyplot(pFig)
+#-------------------------------
+DenPriceFig = plt.figure(figsize=[10,6])
+df = Vehicle_Prices_db[Vehicle_Prices_db['Price'] < 100000]
+sb.kdeplot(data= df, x='Price')
+plt.ticklabel_format(useOffset=False, style='plain', axis='x')
+st.pyplot(DenPriceFig)
+
+#-------------------------------
+DenPriceFig = plt.figure(figsize=[10,6])
+sb.kdeplot(data= Vehicle_Prices_db, x='Kilometres')
+plt.ticklabel_format(useOffset=False, style='plain', axis='x')
+st.pyplot(DenPriceFig)
+
+#--------------------------------------
+ScatPlot = plt.figure(figsize=(15,12))
+X = df['Price']
+Y = df['Brand']
+plt.scatter(X,Y)
+plt.xlabel('Price' , fontsize= 14)
+plt.ylabel('Brand' , fontsize= 14)
+plt.ticklabel_format(useOffset=False, style='plain', axis='x')
+st.pyplot(ScatPlot)
