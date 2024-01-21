@@ -4,6 +4,7 @@ import numpy as np
 
 from settings import Path , AboutDataSet , KeyFeaturesInDataSet
 import GetDateFrame as gf
+#-------------------------------------------------------------------------
 
 st.subheader("About Dataset:")
 st.markdown( AboutDataSet )
@@ -13,10 +14,10 @@ with st.expander("See Key Features:"):
    st.markdown( KeyFeaturesInDataSet )
    
 
-# read svc file --> direction is on the setting file
+# get orignal Dataset and uncleaned -----------------------------------------
 df = gf.GetUncleanData()
-#pd.set_option('display.max_rows', None)
 
+# Disply data frame----------------------------------------------------------
 st.markdown('Descrition of Dataset:')
 DataSetDescribe = df.describe(include='all')
 st.write(DataSetDescribe)
@@ -37,12 +38,13 @@ else:
 
 
 
-# Data Cleaning 
+# Data Cleaning ------------------------------------------------------------
+   
 st.write(''':blue[Cleaning Data:]
           First extract Numbers in some of columns 
          ''')
 
-
+# display count of null valuses in each column
 sumNa = df.isna().sum()
 with st.expander("See Sum of Null values in each columns before cleaning"):
      strs = ""
@@ -50,8 +52,9 @@ with st.expander("See Sum of Null values in each columns before cleaning"):
          strs = strs +'\t\t' +item + ' : :red[' + str(sumNa[item]) +']'
      st.write(strs)
 
+#-----------------------------------------------------------------------------
 
-
+# get Clean Datafarme and check null values-----------------------------------
 CleanDataFrame = gf.GetCleanData()
 sumNa = CleanDataFrame.isna().sum()
 with st.expander("See Sum of Null values in each columns after cleaning"):
@@ -60,8 +63,9 @@ with st.expander("See Sum of Null values in each columns after cleaning"):
          strs = strs +'\t\t' +item + ' : :red[' + str(sumNa[item]) +']'
      st.write(strs)
 
-
-#Filter Data exploration
+#------------------------------------------------------------------------------
+     
+#Filter Data to dispaly---------------------------------------------------------
      
 ListOfBrands = ["Select Brand"]
 ListOfBrands.extend(CleanDataFrame.Brand.drop_duplicates().tolist())
@@ -81,3 +85,5 @@ if SelectedBody == "Select BodyTpe":
 else:
    FiltterdDf2 =  CleanDataFrame[ CleanDataFrame.BodyType == SelectedBody ]
 st.write(FiltterdDf2)
+
+#--------------------------------------------------------------------------------
