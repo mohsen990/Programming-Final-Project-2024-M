@@ -1,10 +1,8 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
-
 from settings import Path , AboutDataSet , KeyFeaturesInDataSet
-import GetDateFrame as gf
+import GetDataFrame as gf
 #-------------------------------------------------------------------------
+
 
 st.subheader("About Dataset:")
 st.markdown( AboutDataSet )
