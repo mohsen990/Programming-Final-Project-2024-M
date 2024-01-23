@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sb
+import seaborn as sns
 import sklearn as sk
 import GetDataFrame as gf
 
@@ -105,8 +105,8 @@ st.write("\n____________________________________________________________________
 st.subheader('Visualization')
 st.write("Visualization of Random Forest Regression model:\n")
 fig = plt.figure(figsize=(16, 6))
-sb.scatterplot(x=y_test, y=y_predition, color='green', alpha=0.9, edgecolor='k', s=80)
-sb.regplot(x=y_test.astype(float), y=y_predition.astype(float), scatter=False, color='r')
+sns.scatterplot(x=y_test, y=y_predition, color='green', alpha=0.9, edgecolor='k', s=80)
+sns.regplot(x=y_test.astype(float), y=y_predition.astype(float), scatter=False, color='r')
 
 plt.xlabel("Actual Price", fontsize=14)
 plt.ylabel("Predicted Price", fontsize=14)
