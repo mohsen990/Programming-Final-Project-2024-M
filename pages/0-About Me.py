@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-# dd
+# 
 st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">', unsafe_allow_html=True)
 
 custom_css = """
@@ -50,9 +50,7 @@ custom_css = """
 
 st.markdown(custom_css, unsafe_allow_html=True)
 
-
-
-# My Profile 
+# My Profile --------------------------------------------------------------------------------------
 profile_Info = """
     <h1>My profile:</h1>
     <div class="container">
