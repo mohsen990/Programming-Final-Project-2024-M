@@ -1,7 +1,7 @@
 import os 
-FileName = "Australian Vehicle Prices.csv"
-MainRoot = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-Path  = str(MainRoot) + "\\FinalProjectApp\\data\\" + FileName
+FileName = "Australian Vehicle Prices.csv"      # csv file name
+MainRoot = os.path.dirname(os.path.abspath(__file__))
+Path  = MainRoot + "\\data\\" + FileName
 
 AboutDataSet = '''
             This dataset contains the latest information on car prices in Australia for the year 2023.

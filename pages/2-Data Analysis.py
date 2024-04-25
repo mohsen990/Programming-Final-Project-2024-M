@@ -23,11 +23,11 @@ sns.histplot(Vehicle_Prices_db[['Price']] , bins=20 , kde=True )
 plt.title('Price', fontsize = 16)
 
 SubFig_3 = fig.add_subplot(2,3,3)
-sns.histplot(Vehicle_Prices_db[['Seats']] , bins=20 ,kde=True)
+sns.histplot(Vehicle_Prices_db[['Seats']] , bins=30 ,kde=True)
 plt.title('Seats', fontsize = 16)
 
 SubFig_4 = fig.add_subplot(2,3,4)
-sns.histplot(Vehicle_Prices_db[['Doors']] , bins=20 ,kde=True)
+sns.histplot(Vehicle_Prices_db[['Doors']] , bins=30 ,kde=True)
 plt.title('Doors', fontsize = 16)
 plt.suptitle('Histogram of integer columns')
 
